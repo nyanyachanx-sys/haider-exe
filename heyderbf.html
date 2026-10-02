@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HAIDER.EXE ♡</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #fff7fb;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #59434f;
+    padding: 20px;
+}
+.card {
+    width: 95%;
+    max-width: 600px;
+    background: white;
+    border: 2px solid #e6b5cb;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(180,120,150,.15);
+}
+h1 {
+    color: #c879a0;
+    letter-spacing: 4px;
+}
+.subtitle {
+    color: #9b7b8b;
+}
+/* =========================
+   SCENE
+========================= */
+.scene {
+    height: 250px;
+    margin: 20px 0;
+    background: #fffafd;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+/* =========================
+   PIXEL HAIDER
+========================= */
+.pixel-haider {
+    position: absolute;
+    left: 28%;
+    bottom: 25px;
+    width: 70px;
+    height: 175px;
+}
+/* hair */
+.pixel-hair {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 50px;
+    height: 28px;
+    background: #382828;
+}
+/* head */
+.pixel-head {
+    position: absolute;
+    top: 28px;
+    left: 13px;
+    width: 44px;
+    height: 45px;
+    background: #b97855;
+}
+/* neck */
+.pixel-neck {
+    position: absolute;
+    top: 70px;
+    left: 29px;
+    width: 13px;
+    height: 12px;
+    background: #b97855;
+}
+/* shirt */
+.pixel-shirt {
+    position: absolute;
+    top: 80px;
+    left: 8px;
+    width: 54px;
+    height: 48px;
+    background: #8870a5;
+}
+/* arms */
+.pixel-arm {
+    position: absolute;
+    top: 82px;
+    width: 12px;
+    height: 42px;
+    background: #b97855;
+}
+.pixel-arm.left {
+    left: -3px;
+}
+.pixel-arm.right {
+    right: -3px;
+}
+/* pants */
+.pixel-pants {
+    position: absolute;
+    top: 128px;
+    left: 12px;
+    width: 46px;
+    height: 22px;
+    background: #4c4357;
+}
+/* legs */
+.pixel-leg {
+    position: absolute;
+    top: 145px;
+    width: 17px;
+    height: 28px;
+    background: #4c4357;
+}
+.pixel-leg.left {
+    left: 13px;
+}
+.pixel-leg.right {
+    right: 13px;
+}
+/* =========================
+   BIG FLOWER
+========================= */
+.flower {
+    position: absolute;
+    right: 20%;
+    bottom: 25px;
+    width: 90px;
+    height: 170px;
+    cursor: pointer;
+}
+/* stem */
+.stem {
+    position: absolute;
+    bottom: 0;
+    left: 42px;
+    width: 7px;
+    height: 105px;
+    background: #70a875;
+}
+/* leaf */
+.leaf {
+    position: absolute;
+    bottom: 42px;
+    left: 8px;
+    width: 35px;
+    height: 15px;
+    background: #91bd91;
+    transform: rotate(-20deg);
+}
+/* flower head */
+.flower-head {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    width: 65px;
+    height: 65px;
+}
+/* petals */
+.petal {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #f2a4c4;
+}
+.petal.one {
+    top: 0;
+    left: 17px;
+}
+.petal.two {
+    top: 17px;
+    left: 0;
+}
+.petal.three {
+    top: 17px;
+    right: 0;
+}
+.petal.four {
+    bottom: 0;
+    left: 17px;
+}
+/* center */
+.flower-center {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    background: #f5c85f;
+    top: 22px;
+    left: 22px;
+}
+/* =========================
+   TEXT
+========================= */
+.hint {
+    font-size: 12px;
+    color: #a9909e;
+    margin-bottom: 10px;
+}
+button {
+    background: white;
+    color: #b86591;
+    border: 1px solid #d88caf;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-family: monospace;
+    cursor: pointer;
+    margin: 6px;
+}
+button:hover {
+    background: #fff0f6;
+}
+#result {
+    margin-top: 20px;
+    line-height: 1.8;
+}
+.big {
+    font-size: 20px;
+    color: #bd6c96;
+}
+.heart {
+    color: #ed86ad;
+}
+/* =========================
+   FLOATING HEARTS
+========================= */
+.heart-float {
+    position: fixed;
+    bottom: 0;
+    color: #ed86ad;
+    animation: rise 3s linear forwards;
+    pointer-events: none;
+}
+@keyframes rise {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+<body>
+<div class="card">
+<h1>HAIDER.EXE</h1>
+<div class="subtitle">
+boyfriend day edition ♡
+</div>
+<!-- SCENE -->
+<div class="scene">
+<!-- HAIDER -->
+<div class="pixel-haider">
+<div class="pixel-hair"></div>
+<div class="pixel-head"></div>
+<div class="pixel-neck"></div>
+<div class="pixel-shirt"></div>
+<div class="pixel-arm left"></div>
+<div class="pixel-arm right"></div>
+<div class="pixel-pants"></div>
+<div class="pixel-leg left"></div>
+<div class="pixel-leg right"></div>
+</div>
+<!-- FLOWER -->
+<div class="flower" onclick="flowerLove()">
+<div class="flower-head">
+<div class="petal one"></div>
+<div class="petal two"></div>
+<div class="petal three"></div>
+<div class="petal four"></div>
+<div class="flower-center"></div>
+</div>
+<div class="stem"></div>
+<div class="leaf"></div>
+</div>
+</div>
+<div class="hint">
+tiny haider brought you a flower ♡
+<br>
+(click the flower)
+</div>
+<br>
+<div>
+&gt; boyfriend detected.
+</div>
+<div>
+&gt; beginning very serious evaluation...
+</div>
+<button onclick="start()">
+START BF DAY ♡
+</button>
+<div id="result"></div>
+</div>
+<script>
+function start() {
+document.getElementById("result").innerHTML = `
+&gt; quick verification required.
+<br><br>
+<strong>
+Are you Haya's boyfriend?
+</strong>
+<br>
+<button onclick="yes()">
+YES ♡
+</button>
+<button onclick="nope()">
+NO
+</button>
+`;
+}
+function nope() {
+document.getElementById("result").innerHTML = `
+&gt; checking answer...
+<br><br>
+❌ incorrect answer.
+<br>
+&gt; nice try.
+<br>
+<button onclick="start()">
+TRY AGAIN
+</button>
+`;
+}
+function yes() {
+document.getElementById("result").innerHTML = `
+&gt; answer accepted ♡
+<br><br>
+✓ boyfriend detected
+<br>
+✓ Haya approved
+<br>
+✓ application accepted
+<br><br>
+&gt; boyfriend privileges unlocked.
+<br><br>
+♡ unlimited "call me" requests
+<br>
+♡ random pictures
+<br>
+♡ listening to unnecessary stories
+<br>
+♡ hugs whenever requested
+<br>
+♡ receiving songs you may or may not listen to
+<br>
+♡ being loved an unreasonable amount
+<br><br>
+<button onclick="accept()">
+ACCEPT PRIVILEGES
+</button>
+`;
+}
+function accept() {
+document.getElementById("result").innerHTML = `
+&gt; privileges accepted ♡
+<br><br>
+<div class="big">
+HAPPY BOYFRIEND DAY
+</div>
+<br>
+you are officially today's
+<br>
+most important person.
+<br><br>
+unfortunately...
+<br>
+this position is permanent.
+<br>
+no refunds.
+<br>
+no exchanges.
+<br>
+you're stuck with me.
+<br><br>
+<button onclick="fate()">
+ACCEPT FATE ♡
+</button>
+`;
+}
+function fate() {
+makeHearts();
+document.getElementById("result").innerHTML = `
+&gt; fate accepted.
+<br><br>
+<div class="big">
+BOYFRIEND STATUS: PERMANENT ♡
+</div>
+<br><br>
+✓ still my person
+<br>
+✓ still my favourite idiot
+<br>
+✓ still very very loved
+<br><br>
+<span class="heart">
+♥ happy boyfriend day, haider.
+</span>
+<br><br>
+<span class="heart big">
+"i love you, idiot."
+</span>
+<br><br>
+&gt; okayyy bye.
+<br>
+&gt; actually wait.
+<br>
+&gt; one last thing...
+<br><br>
+<strong>
+call me ♡
+</strong>
+`;
+}
+function flowerLove() {
+makeHearts();
+document.querySelector(".hint").innerHTML =
+"flower successfully delivered ♡";
+}
+function makeHearts() {
+for (let i = 0; i < 20; i++) {
+let heart = document.createElement("div");
+heart.className = "heart-float";
+heart.innerHTML = "♡";
+heart.style.left =
+Math.random() * 100 + "vw";
+heart.style.fontSize =
+(15 + Math.random() * 15) + "px";
+document.body.appendChild(heart);
+setTimeout(() => {
+heart.remove();
+}, 3500);
+}
+}
+</script>
+</body>
+</html>
