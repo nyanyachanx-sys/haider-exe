@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>♡ kisses ♡</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: #fff7fb;
+    font-family: monospace;
+    position: relative;
+    cursor: pointer;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #c879a0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.center .heart {
+    font-size: 45px;
+    animation: heartbeat 1.4s infinite;
+}
+
+.center p {
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.floating {
+    position: absolute;
+    bottom: -50px;
+    pointer-events: none;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+.explode {
+    position: fixed;
+    pointer-events: none;
+    animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(
+            calc((var(--x) - 50) * 1px),
+            calc((var(--y) - 50) * 1px)
+        ) scale(1.4);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="center">
+    <div class="heart">♡</div>
+    <p>just a lot of love for haider</p>
+</div>
+
+<script>
+
+const things = [
+    "♡",
+    "♥",
+    "♡",
+    "💗",
+    "💋",
+    "xoxo",
+    "♡",
+    "💗",
+    "kiss",
+    "♡"
+];
+
+function createFloating() {
+
+    const item = document.createElement("div");
+
+    item.className = "floating";
+
+    item.innerHTML =
+        things[Math.floor(Math.random() * things.length)];
+
+    item.style.left = Math.random() * 100 + "vw";
+
+    item.style.fontSize =
+        (12 + Math.random() * 22) + "px";
+
+    item.style.animationDuration =
+        (5 + Math.random() * 6) + "s";
+
+    item.style.animationDelay =
+        Math.random() * 2 + "s";
+
+    document.body.appendChild(item);
+
+    setTimeout(() => {
+        item.remove();
+    }, 13000);
+}
+
+setInterval(createFloating, 350);
+
+for (let i = 0; i < 20; i++) {
+    setTimeout(createFloating, i * 150);
+}
+
+
+/* CLICK = KISS EXPLOSION */
+
+document.body.addEventListener("click", function(e) {
+
+    for (let i = 0; i < 15; i++) {
+
+        const kiss = document.createElement("div");
+
+        kiss.className = "explode";
+
+        kiss.innerHTML =
+            Math.random() > 0.5 ? "♡" : "💋";
+
+        kiss.style.left = e.clientX + "px";
+        kiss.style.top = e.clientY + "px";
+
+        kiss.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+
+        kiss.style.setProperty(
+            "--x",
+            (Math.random() * 300 - 150)
+        );
+
+        kiss.style.setProperty(
+            "--y",
+            (Math.random() * 300 - 150)
+        );
+
+        document.body.appendChild(kiss);
+
+        setTimeout(() => {
+            kiss.remove();
+        }, 1500);
+    }
+
+});
+
+</script>
+
+</body>
+</html>
