@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMJA'S BF DAY QUEST 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f8dce8;
+    font-family: monospace;
+    overflow: hidden;
+}
+
+#game {
+    position: relative;
+    width: 800px;
+    height: 520px;
+    margin: 30px auto;
+    background: #9bd58b;
+    border: 8px solid #5b4a55;
+    overflow: hidden;
+}
+
+.grass {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20px 20px, #75bd70 2px, transparent 3px),
+        radial-gradient(circle at 80px 60px, #82c778 2px, transparent 3px),
+        #9bd58b;
+    background-size: 100px 90px;
+}
+
+/* PATHS */
+.path {
+    position: absolute;
+    background: #e4c995;
+    border: 3px solid #c9ad75;
+}
+
+.path.horizontal {
+    width: 100%;
+    height: 70px;
+    top: 225px;
+}
+
+.path.vertical {
+    width: 70px;
+    height: 100%;
+    left: 365px;
+}
+
+/* WATER */
+.water {
+    position: absolute;
+    background: #72c9dc;
+    border: 5px solid #4a9caf;
+}
+
+.water1 {
+    width: 145px;
+    height: 100px;
+    right: 15px;
+    top: 15px;
+}
+
+.water2 {
+    width: 120px;
+    height: 85px;
+    left: 15px;
+    bottom: 15px;
+}
+
+/* TREES */
+.tree {
+    position: absolute;
+    width: 55px;
+    height: 65px;
+}
+
+.tree .trunk {
+    position: absolute;
+    width: 18px;
+    height: 35px;
+    background: #795548;
+    left: 19px;
+    top: 30px;
+}
+
+.tree .leaves {
+    position: absolute;
+    width: 55px;
+    height: 45px;
+    background: #4f9c55;
+    border-radius: 50%;
+    top: 0;
+    box-shadow:
+        -18px 12px 0 #438b4a,
+        18px 12px 0 #438b4a;
+}
+
+.tree1 { left: 70px; top: 45px; }
+.tree2 { right: 190px; top: 65px; }
+.tree3 { left: 95px; bottom: 60px; }
+.tree4 { right: 70px; bottom: 65px; }
+
+/* FLOWERS */
+.flower {
+    position: absolute;
+    font-size: 22px;
+}
+
+/* HEARTS */
+.heart {
+    position: absolute;
+    font-size: 25px;
+    cursor: pointer;
+    z-index: 10;
+    animation: float 1.5s infinite alternate;
+}
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(-6px); }
+}
+
+
+/* =================================
+   HAMJA — SAME PIXEL STYLE AS HAIDER
+================================= */
+
+#player {
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    z-index: 30;
+}
+
+/* HAIR */
+.hair {
+    position: absolute;
+    width: 42px;
+    height: 27px;
+    left: 4px;
+    top: 2px;
+    background: #30252c;
+    border-radius: 7px 7px 3px 3px;
+}
+
+/* little hair sides */
+.hair::before {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 20px;
+    left: -4px;
+    top: 8px;
+    background: #30252c;
+    border-radius: 5px;
+}
+
+.hair::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 20px;
+    right: -4px;
+    top: 8px;
+    background: #30252c;
+    border-radius: 5px;
+}
+
+/* PEACH FACE */
+.head {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    left: 8px;
+    top: 12px;
+    background: #f2b995;
+    border-radius: 5px;
+    z-index: 2;
+}
+
+/* EYES */
+.eye {
+    position: absolute;
+    width: 4px;
+    height: 5px;
+    background: #30252c;
+    top: 14px;
+}
+
+.eye1 {
+    left: 8px;
+}
+
+.eye2 {
+    right: 8px;
+}
+
+/* tiny smile */
+.mouth {
+    position: absolute;
+    width: 7px;
+    height: 3px;
+    border-bottom: 2px solid #9e5c62;
+    left: 13px;
+    top: 23px;
+}
+
+/* SHIRT */
+.shirt {
+    position: absolute;
+    width: 34px;
+    height: 25px;
+    left: 8px;
+    top: 44px;
+    background: #8d68a4;
+    border-radius: 5px 5px 2px 2px;
+}
+
+/* ARMS */
+.arm {
+    position: absolute;
+    width: 9px;
+    height: 21px;
+    background: #f2b995;
+    top: 45px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.arm1 {
+    left: 1px;
+}
+
+.arm2 {
+    right: 1px;
+}
+
+/* LEGS */
+.leg {
+    position: absolute;
+    width: 10px;
+    height: 18px;
+    background: #41384c;
+    top: 66px;
+    border-radius: 0 0 3px 3px;
+}
+
+.leg1 {
+    left: 12px;
+}
+
+.leg2 {
+    right: 12px;
+}
+
+
+/* NOTES */
+.note {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    background: #fff4b8;
+    border: 3px solid #d5b85b;
+    box-shadow: 3px 3px 0 #b49645;
+    z-index: 12;
+}
+
+.note::before {
+    content: "♡";
+    position: absolute;
+    font-size: 24px;
+    color: #d66b8b;
+    left: 7px;
+    top: 4px;
+}
+
+.note.collected {
+    display: none;
+}
+
+
+/* NOTE POPUP */
+#notePopup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(45, 30, 40, 0.55);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+
+.paper {
+    width: 360px;
+    min-height: 230px;
+    background: #fff7d6;
+    border: 5px solid #d5b85b;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+    padding: 35px 28px;
+    text-align: center;
+    color: #4b3943;
+}
+
+.paper h2 {
+    margin-top: 0;
+    color: #d46b88;
+}
+
+.paper p {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.paper button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: 0;
+    background: #e88eaa;
+    color: white;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+
+/* START + FINAL */
+#startScreen,
+#finalScreen {
+    position: fixed;
+    inset: 0;
+    background: rgba(55, 35, 45, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+}
+
+.box {
+    width: 420px;
+    padding: 30px;
+    background: #fff0f5;
+    border: 6px solid #d97898;
+    text-align: center;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+}
+
+.box h1 {
+    color: #d45f83;
+    margin-top: 0;
+}
+
+.box p {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.startBtn {
+    border: none;
+    background: #dc7897;
+    color: white;
+    padding: 13px 25px;
+    font-family: monospace;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#finalScreen {
+    display: none;
+}
+
+.confetti {
+    position: fixed;
+    font-size: 25px;
+    animation: confetti 2s linear forwards;
+    z-index: 300;
+}
+
+@keyframes confetti {
+    from {
+        transform: translateY(-30px) rotate(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- START SCREEN -->
+<div id="startScreen">
+
+    <div class="box">
+
+        <h1>HAMJA'S BF DAY QUEST 💗</h1>
+
+        <p>
+            a tiny little adventure<br>
+            made especially for you.
+        </p>
+
+        <p>
+            collect the hearts.<br>
+            find the secret notes.<br>
+            reach the end.
+        </p>
+
+        <button class="startBtn" onclick="startGame()">
+            START QUEST ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- GAME -->
+<div id="game">
+
+    <div class="grass"></div>
+
+    <div class="path horizontal"></div>
+    <div class="path vertical"></div>
+
+    <div class="water water1"></div>
+    <div class="water water2"></div>
+
+
+    <!-- TREES -->
+
+    <div class="tree tree1">
+        <div class="trunk"></div>
+        <div class="leaves"></div>
+    </div>
+
+    <div class="tree tree2">
+        <div class="trunk"></div>
+        <div class="leaves"></div>
+    </div>
+
+    <div class="tree tree3">
+        <div class="trunk"></div>
+        <div class="leaves"></div>
+    </div>
+
+    <div class="tree tree4">
+        <div class="trunk"></div>
+        <div class="leaves"></div>
+    </div>
+
+
+    <!-- FLOWERS -->
+
+    <div class="flower" style="left:150px;top:180px;">🌸</div>
+    <div class="flower" style="left:650px;top:250px;">🌷</div>
+    <div class="flower" style="left:240px;top:400px;">🌼</div>
+    <div class="flower" style="left:590px;top:380px;">🌸</div>
+
+
+    <!-- HEARTS -->
+
+    <div class="heart"
+         id="heart1"
+         style="left:120px;top:255px;"
+         onclick="collectHeart('heart1')">
+        💗
+    </div>
+
+    <div class="heart"
+         id="heart2"
+         style="left:570px;top:180px;"
+         onclick="collectHeart('heart2')">
+        💗
+    </div>
+
+    <div class="heart"
+         id="heart3"
+         style="left:650px;top:350px;"
+         onclick="collectHeart('heart3')">
+        💗
+    </div>
+
+    <div class="heart"
+         id="heart4"
+         style="left:260px;top:360px;"
+         onclick="collectHeart('heart4')">
+        💗
+    </div>
+
+
+    <!-- SECRET NOTES -->
+
+    <div class="note"
+         id="note1"
+         style="left:190px;top:130px;">
+    </div>
+
+    <div class="note"
+         id="note2"
+         style="left:470px;top:110px;">
+    </div>
+
+    <div class="note"
+         id="note3"
+         style="left:310px;top:330px;">
+    </div>
+
+
+    <!-- HAMJA -->
+
+    <div id="player"
+         style="left:350px;top:260px;">
+
+        <div class="hair"></div>
+
+        <div class="head">
+
+            <div class="eye eye1"></div>
+            <div class="eye eye2"></div>
+
+            <div class="mouth"></div>
+
+        </div>
+
+        <div class="shirt"></div>
+
+        <div class="arm arm1"></div>
+        <div class="arm arm2"></div>
+
+        <div class="leg leg1"></div>
+        <div class="leg leg2"></div>
+
+    </div>
+
+</div>
+
+
+<!-- NOTE POPUP -->
+
+<div id="notePopup">
+
+    <div class="paper">
+
+        <h2>SECRET NOTE ♡</h2>
+
+        <p id="noteText"></p>
+
+        <button onclick="closeNote()">
+            PUT NOTE AWAY ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FINAL SCREEN -->
+
+<div id="finalScreen">
+
+    <div class="box">
+
+        <h1>QUEST COMPLETE 💗</h1>
+
+        <p>
+            you found everything.
+        </p>
+
+        <p>
+            and somehow, after all that,
+            the final prize was just this:
+        </p>
+
+        <h2>i love you ♡</h2>
+
+        <p>
+            happy boyfriend day, hamja.
+        </p>
+
+        <button class="startBtn"
+                onclick="location.reload()">
+            PLAY AGAIN ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* SECRET NOTES */
+
+const secretNotes = {
+
+    note1:
+    "i would tap to ur armbar but i would never tap out of loving you",
+
+    note2:
+    "kha jaoun gi apko sara kisi din sorry boss",
+
+    note3:
+    "kehne ka maqsad hai ye ke i love you"
+
+};
+
+
+/* GAME VARIABLES */
+
+let playing = false;
+
+let heartsCollected = 0;
+
+const totalHearts = 4;
+
+let keys = {};
+
+let playerX = 350;
+
+let playerY = 260;
+
+const speed = 3;
+
+
+/* START */
+
+function startGame() {
+
+    document.getElementById("startScreen").style.display =
+        "none";
+
+    playing = true;
+
+    gameLoop();
+
+}
+
+
+/* KEYBOARD */
+
+document.addEventListener("keydown", function(e) {
+
+    keys[e.key.toLowerCase()] = true;
+
+});
+
+document.addEventListener("keyup", function(e) {
+
+    keys[e.key.toLowerCase()] = false;
+
+});
+
+
+/* MOVEMENT */
+
+function movePlayer() {
+
+    if (!playing) return;
+
+
+    if (
+        keys["arrowup"] ||
+        keys["w"]
+    ) {
+        playerY -= speed;
+    }
+
+
+    if (
+        keys["arrowdown"] ||
+        keys["s"]
+    ) {
+        playerY += speed;
+    }
+
+
+    if (
+        keys["arrowleft"] ||
+        keys["a"]
+    ) {
+        playerX -= speed;
+    }
+
+
+    if (
+        keys["arrowright"] ||
+        keys["d"]
+    ) {
+        playerX += speed;
+    }
+
+
+    playerX =
+        Math.max(
+            0,
+            Math.min(730, playerX)
+        );
+
+
+    playerY =
+        Math.max(
+            0,
+            Math.min(410, playerY)
+        );
+
+
+    document.getElementById("player").style.left =
+        playerX + "px";
+
+    document.getElementById("player").style.top =
+        playerY + "px";
+
+
+    checkObjects();
+
+}
+
+
+/* DISTANCE */
+
+function distance(x1,y1,x2,y2) {
+
+    return Math.sqrt(
+        Math.pow(x1-x2,2) +
+        Math.pow(y1-y2,2)
+    );
+
+}
+
+
+/* CHECK NOTES */
+
+function checkObjects() {
+
+    const notes = [
+
+        {
+            id: "note1",
+            x: 190,
+            y: 130,
+            text: secretNotes.note1
+        },
+
+        {
+            id: "note2",
+            x: 470,
+            y: 110,
+            text: secretNotes.note2
+        },
+
+        {
+            id: "note3",
+            x: 310,
+            y: 330,
+            text: secretNotes.note3
+        }
+
+    ];
+
+
+    notes.forEach(function(note) {
+
+        const element =
+            document.getElementById(note.id);
+
+
+        if (
+            !element.classList.contains("collected") &&
+            distance(
+                playerX,
+                playerY,
+                note.x,
+                note.y
+            ) < 45
+        ) {
+
+            element.classList.add("collected");
+
+            openNote(note.text);
+
+        }
+
+    });
+
+
+    checkFinal();
+
+}
+
+
+/* OPEN NOTE */
+
+function openNote(text) {
+
+    document.getElementById("noteText").innerText =
+        text;
+
+    document.getElementById("notePopup").style.display =
+        "flex";
+
+}
+
+
+/* CLOSE NOTE */
+
+function closeNote() {
+
+    document.getElementById("notePopup").style.display =
+        "none";
+
+}
+
+
+/* HEART */
+
+function collectHeart(id) {
+
+    const heart =
+        document.getElementById(id);
+
+
+    if (
+        heart.style.display === "none"
+    ) {
+        return;
+    }
+
+
+    heart.style.display = "none";
+
+    heartsCollected++;
+
+    createFloatingHeart();
+
+    checkFinal();
+
+}
+
+
+/* FLOATING HEART */
+
+function createFloatingHeart() {
+
+    const heart =
+        document.createElement("div");
+
+    heart.innerText = "💗";
+
+    heart.style.position = "fixed";
+
+    heart.style.left =
+        Math.random() *
+        window.innerWidth +
+        "px";
+
+    heart.style.top =
+        Math.random() *
+        window.innerHeight +
+        "px";
+
+    heart.style.fontSize = "25px";
+
+    heart.style.zIndex = "500";
+
+    document.body.appendChild(heart);
+
+
+    setTimeout(function() {
+
+        heart.remove();
+
+    }, 1000);
+
+}
+
+
+/* FINAL */
+
+function checkFinal() {
+
+    const notesLeft =
+        document.querySelectorAll(
+            ".note:not(.collected)"
+        ).length;
+
+
+    if (
+        heartsCollected >= totalHearts &&
+        notesLeft === 0
+    ) {
+
+        setTimeout(function() {
+
+            document.getElementById(
+                "finalScreen"
+            ).style.display = "flex";
+
+            confetti();
+
+        }, 500);
+
+    }
+
+}
+
+
+/* CONFETTI */
+
+function confetti() {
+
+    const symbols = [
+        "💗",
+        "💕",
+        "💖",
+        "🌸",
+        "✨",
+        "♡"
+    ];
+
+
+    for (
+        let i = 0;
+        i < 35;
+        i++
+    ) {
+
+        const piece =
+            document.createElement("div");
+
+        piece.className =
+            "confetti";
+
+        piece.innerText =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        piece.style.left =
+            Math.random() *
+            window.innerWidth +
+            "px";
+
+
+        piece.style.top =
+            "-30px";
+
+
+        piece.style.animationDelay =
+            Math.random() *
+            1 +
+            "s";
+
+
+        document.body.appendChild(piece);
+
+
+        setTimeout(function() {
+
+            piece.remove();
+
+        }, 3000);
+
+    }
+
+}
+
+
+/* GAME LOOP */
+
+function gameLoop() {
+
+    movePlayer();
+
+    if (playing) {
+
+        requestAnimationFrame(
+            gameLoop
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
