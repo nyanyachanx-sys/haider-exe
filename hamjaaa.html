@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAMZA'S BF DAY QUEST 💗</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+body {
+    margin: 0;
+    background: #100d20;
+    color: white;
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#game {
+    width: min(900px, 96vw);
+    background: #211b3b;
+    border: 6px solid #ff82ad;
+    box-shadow: 0 0 0 5px #090712, 0 20px 60px #000;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    min-height: 650px;
+    padding: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.active {
+    display: flex;
+}
+
+h1 {
+    color: #ff9fc2;
+    font-size: clamp(28px, 7vw, 55px);
+    text-shadow: 5px 5px #713252;
+}
+
+h2 {
+    color: #ffd4e2;
+}
+
+button {
+    background: #d84e82;
+    color: white;
+    border: 4px solid #ffb3cb;
+    padding: 13px 20px;
+    margin: 7px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 5px 5px #713252;
+    cursor: pointer;
+}
+
+button:active {
+    transform: translate(4px,4px);
+    box-shadow: 1px 1px #713252;
+}
+
+/* INTRO */
+
+.introHeart {
+    font-size: 70px;
+    animation: beat .8s infinite alternate;
+}
+
+@keyframes beat {
+    to {
+        transform: scale(1.2);
+    }
+}
+
+
+/* WORLD */
+
+#world {
+    width: 100%;
+    max-width: 760px;
+    height: 440px;
+    position: relative;
+    overflow: hidden;
+    border: 6px solid #ff9fc2;
+
+    background:
+        linear-gradient(135deg, #4e8755 25%, transparent 25%) 0 0/45px 45px,
+        linear-gradient(315deg, #4e8755 25%, transparent 25%) 0 0/45px 45px,
+        #61995c;
+}
+
+
+/* PATHS */
+
+.path {
+    position: absolute;
+    background: #c69a67;
+}
+
+.path.horizontal {
+    width: 100%;
+    height: 60px;
+    top: 190px;
+}
+
+.path.vertical {
+    width: 70px;
+    height: 100%;
+    left: 340px;
+}
+
+
+/* WATER */
+
+.water {
+    position: absolute;
+    background: #4b91bb;
+    border: 4px solid #2e6085;
+}
+
+.water.one {
+    width: 150px;
+    height: 100px;
+    right: 0;
+    top: 0;
+}
+
+.water.two {
+    width: 120px;
+    height: 90px;
+    left: 0;
+    bottom: 0;
+}
+
+
+/* TREES */
+
+.tree {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: #27643d;
+    border: 5px solid #173d2b;
+    border-radius: 8px;
+}
+
+.tree:after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 22px;
+    background: #765033;
+    left: 11px;
+    top: 40px;
+}
+
+.t1 { left: 60px; top: 50px; }
+.t2 { left: 150px; top: 85px; }
+.t3 { left: 600px; top: 80px; }
+.t4 { right: 70px; bottom: 55px; }
+.t5 { left: 230px; bottom: 40px; }
+
+
+/* FLOWERS */
+
+.flower {
+    position: absolute;
+    font-size: 20px;
+}
+
+.f1 { left: 280px; top: 90px; }
+.f2 { left: 520px; top: 330px; }
+.f3 { left: 100px; top: 300px; }
+.f4 { right: 170px; top: 150px; }
+
+
+/* ==================================
+   HAMZA
+   ONLY PEACH SKIN + LONG CURLY HAIR
+   ================================== */
+
+#hamza {
+    position: absolute;
+    width: 55px;
+    height: 75px;
+    z-index: 20;
+}
+
+
+/* peach face */
+
+#hamza .head {
+    position: absolute;
+    width: 38px;
+    height: 40px;
+    left: 8px;
+    top: 25px;
+
+    background: #f3b18e;
+
+    border: 3px solid #171225;
+
+    border-radius: 45%;
+
+    z-index: 2;
+}
+
+
+/* LONG CURLY HAIR */
+
+#hamza .curl {
+    position: absolute;
+
+    width: 24px;
+    height: 28px;
+
+    background: #30231e;
+
+    border: 3px solid #171225;
+
+    border-radius: 50%;
+
+    z-index: 4;
+}
+
+
+/* top curls */
+
+#hamza .c1 {
+    left: 5px;
+    top: 8px;
+}
+
+#hamza .c2 {
+    left: 20px;
+    top: 3px;
+}
+
+#hamza .c3 {
+    left: 35px;
+    top: 10px;
+}
+
+
+/* side curls */
+
+#hamza .c4 {
+    left: 0;
+    top: 28px;
+}
+
+#hamza .c5 {
+    left: 40px;
+    top: 30px;
+}
+
+
+/* long curls */
+
+#hamza .c6 {
+    left: 2px;
+    top: 50px;
+}
+
+#hamza .c7 {
+    left: 18px;
+    top: 55px;
+}
+
+#hamza .c8 {
+    left: 35px;
+    top: 52px;
+}
+
+
+/* tiny face */
+
+#hamza .eye {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    background: #30231e;
+
+    border-radius: 50%;
+
+    top: 42px;
+
+    z-index: 6;
+}
+
+#hamza .eye.left {
+    left: 18px;
+}
+
+#hamza .eye.right {
+    left: 33px;
+}
+
+
+/* TREASURE */
+
+#chest {
+    position: absolute;
+    left: 690px;
+    top: 320px;
+    font-size: 42px;
+    z-index: 10;
+    animation: float 1s infinite alternate;
+}
+
+@keyframes float {
+    to {
+        transform: translateY(-6px);
+    }
+}
+
+
+/* HEARTS */
+
+.heart {
+    position: absolute;
+    font-size: 30px;
+    color: #ff83ad;
+    z-index: 10;
+    animation: float 1s infinite alternate;
+}
+
+
+/* DRAGON */
+
+#dragon {
+    position: absolute;
+    left: 650px;
+    top: 245px;
+    font-size: 45px;
+    z-index: 11;
+}
+
+
+/* NOTES */
+
+.note {
+    position: absolute;
+    font-size: 28px;
+    z-index: 10;
+    cursor: pointer;
+    animation: float 1s infinite alternate;
+}
+
+#note1 {
+    left: 190px;
+    top: 130px;
+}
+
+#note2 {
+    left: 470px;
+    top: 110px;
+}
+
+#note3 {
+    left: 310px;
+    top: 330px;
+}
+
+
+/* HUD */
+
+#hud {
+    background: #18132e;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-bottom: 4px solid #ff82ad;
+}
+
+#status {
+    color: #ffd1df;
+}
+
+#message {
+    min-height: 30px;
+    color: #ffb1c9;
+    font-weight: bold;
+    text-align: center;
+    padding: 7px;
+}
+
+
+/* CONTROLS */
+
+.controls {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.controls button {
+    width: 52px;
+    height: 42px;
+    padding: 5px;
+}
+
+
+/* FINAL */
+
+.finalHeart {
+    font-size: 90px;
+    animation: beat .8s infinite alternate;
+}
+
+#final p {
+    max-width: 600px;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.small {
+    opacity: .65;
+    font-size: 12px;
+}
+
+
+/* NOTE POPUP */
+
+#notePopup {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(10, 7, 20, .8);
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+}
+
+.notePaper {
+    width: min(500px, 85vw);
+
+    background: #fff4b5;
+
+    color: #493832;
+
+    border: 5px solid #d6ae53;
+
+    padding: 30px;
+
+    box-shadow: 10px 10px #080610;
+
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    transform: rotate(-2deg);
+}
+
+.notePaper h2 {
+    color: #8c6840;
+    font-family: "Courier New", monospace;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div id="game">
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section id="intro" class="screen active">
+
+    <div class="introHeart">♥️</div>
+
+    <h1>HAMZA'S QUEST</h1>
+
+    <h2>BOYFRIEND DAY 2026</h2>
+
+    <p>
+        Somewhere in this tiny pixel world
+        <br>
+        is a treasure made especially for you.
+    </p>
+
+    <p>
+        Find the hearts.
+        <br>
+        Collect the secret notes.
+        <br>
+        Defeat the dragon.
+        <br>
+        Find your treasure.
+    </p>
+
+    <button onclick="startGame()">
+        START QUEST ♡
+    </button>
+
+    <p class="small">
+        A game made with an unreasonable amount of love.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     GAME
+========================= -->
+
+<section id="play" style="display:none; padding:0;">
+
+    <div id="hud">
+
+        <span>
+            ♥️ HAMZA'S QUEST
+        </span>
+
+        <span id="status">
+            Hearts: 0 / 3
+        </span>
+
+    </div>
+
+
+    <div id="message">
+        Find the three hearts...
+    </div>
+
+
+    <div id="world">
+
+
+        <!-- PATHS -->
+
+        <div class="path horizontal"></div>
+
+        <div class="path vertical"></div>
+
+
+        <!-- WATER -->
+
+        <div class="water one"></div>
+
+        <div class="water two"></div>
+
+
+        <!-- TREES -->
+
+        <div class="tree t1"></div>
+        <div class="tree t2"></div>
+        <div class="tree t3"></div>
+        <div class="tree t4"></div>
+        <div class="tree t5"></div>
+
+
+        <!-- FLOWERS -->
+
+        <div class="flower f1">✿</div>
+        <div class="flower f2">✿</div>
+        <div class="flower f3">✿</div>
+        <div class="flower f4">✿</div>
+
+
+        <!-- SECRET NOTES -->
+
+        <div id="note1" class="note">
+            📜
+        </div>
+
+        <div id="note2" class="note">
+            📜
+        </div>
+
+        <div id="note3" class="note">
+            📜
+        </div>
+
+
+        <!-- HEARTS -->
+
+        <div
+            id="heart1"
+            class="heart"
+            style="left:110px;top:170px;"
+        >
+            ♥️
+        </div>
+
+        <div
+            id="heart2"
+            class="heart"
+            style="left:430px;top:70px;"
+        >
+            ♥️
+        </div>
+
+        <div
+            id="heart3"
+            class="heart"
+            style="left:470px;top:340px;"
+        >
+            ♥️
+        </div>
+
+
+        <!-- DRAGON -->
+
+        <div id="dragon">
+            🐉
+        </div>
+
+
+        <!-- TREASURE -->
+
+        <div id="chest">
+            🎁
+        </div>
+
+
+        <!-- HAMZA -->
+
+        <div
+            id="hamza"
+            style="left:40px;top:195px;"
+        >
+
+            <div class="curl c1"></div>
+            <div class="curl c2"></div>
+            <div class="curl c3"></div>
+            <div class="curl c4"></div>
+            <div class="curl c5"></div>
+            <div class="curl c6"></div>
+            <div class="curl c7"></div>
+            <div class="curl c8"></div>
+
+            <div class="head"></div>
+
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- CONTROLS -->
+
+    <div class="controls">
+
+        <button onclick="move('up')">
+            ▲
+        </button>
+
+        <br>
+
+        <button onclick="move('left')">
+            ◀️
+        </button>
+
+        <button onclick="move('down')">
+            ▼
+        </button>
+
+        <button onclick="move('right')">
+            ▶️
+        </button>
+
+    </div>
+
+
+    <p class="small">
+        Arrow keys / WASD also work ♡
+    </p>
+
+</section>
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section id="final" class="screen">
+
+    <div class="finalHeart">
+        ♥️
+    </div>
+
+    <h1>
+        TREASURE FOUND!
+    </h1>
+
+    <h2>
+        YOU FOUND THE BOYFRIEND DAY TREASURE 💎
+    </h2>
+
+    <p>
+        Hamza,
+    </p>
+
+    <p>
+        You travelled across my tiny little world,
+        <br>
+        collected pieces of my heart,
+        <br>
+        survived a dragon...
+    </p>
+
+    <p>
+        ...and somehow you're still my favourite person.
+    </p>
+
+    <h2>
+        ♡ HAPPY BOYFRIEND DAY ♡
+    </h2>
+
+    <p>
+        Most importantly...
+    </p>
+
+    <h1>
+        YOU'RE MY TREASURE.
+    </h1>
+
+    <p>
+        ♡ I LOVE YOU, HAMZA ♡
+    </p>
+
+    <button onclick="secret()">
+        OPEN SECRET MESSAGE
+    </button>
+
+    <p id="secret"></p>
+
+</section>
+
+
+</div>
+
+
+<!-- =========================
+     NOTE POPUP
+========================= -->
+
+<div id="notePopup">
+
+    <div class="notePaper">
+
+        <h2 id="noteTitle">
+            SECRET NOTE 💌
+        </h2>
+
+        <p id="noteText"></p>
+
+        <button onclick="closeNote()">
+            PUT NOTE AWAY ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   GAME VARIABLES
+========================= */
+
+let x = 40;
+
+let y = 195;
+
+let hearts = 0;
+
+const speed = 12;
+
+const hamza =
+    document.getElementById("hamza");
+
+
+/* =========================
+   NOTES
+   EDIT THESE ANYTIME 💌
+========================= */
+
+const secretNotes = {
+
+    note1:
+    "i would tap to ur armbar but i would never tap out of loving you",
+
+    note2:
+    "kha jaoun gi apko sara kisi din sorry boss",
+
+    note3:
+    "kehne ka maqsad hai ye ke i love you"
+
+};
+
+
+/* =========================
+   NOTE STATUS
+========================= */
+
+const notes = {
+
+    note1: false,
+
+    note2: false,
+
+    note3: false
+
+};
+
+
+/* =========================
+   START GAME
+========================= */
+
+function startGame() {
+
+    document.getElementById("intro")
+        .style.display = "none";
+
+    document.getElementById("play")
+        .style.display = "block";
+
+    document.getElementById("message")
+        .innerText =
+        "Find the three hearts and discover the secret notes... ♡";
+
+}
+
+
+/* =========================
+   MOVEMENT
+========================= */
+
+function move(direction) {
+
+    if (direction === "up") {
+
+        y -= speed;
+
+    }
+
+    if (direction === "down") {
+
+        y += speed;
+
+    }
+
+    if (direction === "left") {
+
+        x -= speed;
+
+    }
+
+    if (direction === "right") {
+
+        x += speed;
+
+    }
+
+
+    /* boundaries */
+
+    x = Math.max(
+        5,
+        Math.min(710, x)
+    );
+
+    y = Math.max(
+        5,
+        Math.min(390, y)
+    );
+
+
+    hamza.style.left =
+        x + "px";
+
+    hamza.style.top =
+        y + "px";
+
+
+    checkObjects();
+
+}
+
+
+/* =========================
+   KEYBOARD
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(e) {
+
+        if (
+            e.key === "ArrowUp" ||
+            e.key.toLowerCase() === "w"
+        ) {
+
+            move("up");
+
+        }
+
+
+        if (
+            e.key === "ArrowDown" ||
+            e.key.toLowerCase() === "s"
+        ) {
+
+            move("down");
+
+        }
+
+
+        if (
+            e.key === "ArrowLeft" ||
+            e.key.toLowerCase() === "a"
+        ) {
+
+            move("left");
+
+        }
+
+
+        if (
+            e.key === "ArrowRight" ||
+            e.key.toLowerCase() === "d"
+        ) {
+
+            move("right");
+
+        }
+
+    }
+);
+
+
+/* =========================
+   DISTANCE
+========================= */
+
+function distance(
+    ax,
+    ay,
+    bx,
+    by
+) {
+
+    return Math.sqrt(
+
+        Math.pow(ax - bx, 2) +
+
+        Math.pow(ay - by, 2)
+
+    );
+
+}
+
+
+/* =========================
+   CHECK OBJECTS
+========================= */
+
+function checkObjects() {
+
+
+    /* HEART 1 */
+
+    if (
+
+        distance(
+            x,
+            y,
+            110,
+            170
+        ) < 45 &&
+
+        document
+            .getElementById("heart1")
+            .style.display !== "none"
+
+    ) {
+
+        collectHeart(
+
+            "heart1",
+
+            "One piece of my heart belongs to you. ♥️"
+
+        );
+
+    }
+
+
+    /* HEART 2 */
+
+    if (
+
+        distance(
+            x,
+            y,
+            430,
+            70
+        ) < 45 &&
+
+        document
+            .getElementById("heart2")
+            .style.display !== "none"
+
+    ) {
+
+        collectHeart(
+
+            "heart2",
+
+            "You somehow became my favourite person. ♡"
+
+        );
+
+    }
+
+
+    /* HEART 3 */
+
+    if (
+
+        distance(
+            x,
+            y,
+            470,
+            340
+        ) < 45 &&
+
+        document
+            .getElementById("heart3")
+            .style.display !== "none"
+
+    ) {
+
+        collectHeart(
+
+            "heart3",
+
+            "Okay fine. You can have ALL of it. ❤️"
+
+        );
+
+    }
+
+
+    /* =========================
+       NOTE 1
+    ========================= */
+
+    if (
+
+        distance(
+            x,
+            y,
+            190,
+            130
+        ) < 45 &&
+
+        !notes.note1
+
+    ) {
+
+        notes.note1 = true;
+
+        openNote(
+            1,
+            secretNotes.note1
+        );
+
+    }
+
+
+    /* =========================
+       NOTE 2
+    ========================= */
+
+    if (
+
+        distance(
+            x,
+            y,
+            470,
+            110
+        ) < 45 &&
+
+        !notes.note2
+
+    ) {
+
+        notes.note2 = true;
+
+        openNote(
+            2,
+            secretNotes.note2
+        );
+
+    }
+
+
+    /* =========================
+       NOTE 3
+    ========================= */
+
+    if (
+
+        distance(
+            x,
+            y,
+            310,
+            330
+        ) < 45 &&
+
+        !notes.note3
+
+    ) {
+
+        notes.note3 = true;
+
+        openNote(
+            3,
+            secretNotes.note3
+        );
+
+    }
+
+
+    /* =========================
+       DRAGON
+    ========================= */
+
+    if (
+
+        distance(
+            x,
+            y,
+            650,
+            245
+        ) < 55
+
+    ) {
+
+        if (hearts < 3) {
+
+            document
+                .getElementById("message")
+                .innerText =
+                "🐉 THE DRAGON: You need all 3 hearts before I let you pass!";
+
+        }
+
+        else {
+
+            document
+                .getElementById("message")
+                .innerText =
+                "🐉 THE DRAGON: Fine. You have proven your love. Go to the treasure!";
+
+        }
+
+    }
+
+
+    /* =========================
+       CHEST
+    ========================= */
+
+    if (
+
+        distance(
+            x,
+            y,
+            690,
+            320
+        ) < 55 &&
+
+        hearts === 3
+
+    ) {
+
+        finishGame();
+
+    }
+
+}
+
+
+/* =========================
+   COLLECT HEART
+========================= */
+
+function collectHeart(
+    id,
+    text
+) {
+
+    document
+        .getElementById(id)
+        .style.display = "none";
+
+
+    hearts++;
+
+
+    document
+        .getElementById("status")
+        .innerText =
+        "Hearts: " +
+        hearts +
+        " / 3";
+
+
+    document
+        .getElementById("message")
+        .innerText =
+        text;
+
+}
+
+
+/* =========================
+   OPEN NOTE
+========================= */
+
+function openNote(
+    number,
+    text
+) {
+
+    document
+        .getElementById("noteTitle")
+        .innerText =
+        "SECRET NOTE " +
+        number +
+        " 💌";
+
+
+    document
+        .getElementById("noteText")
+        .innerText =
+        text;
+
+
+    document
+        .getElementById("notePopup")
+        .style.display =
+        "flex";
+
+
+    document
+        .getElementById("message")
+        .innerText =
+        "💌 You found a secret note!";
+
+
+}
+
+
+/* =========================
+   CLOSE NOTE
+========================= */
+
+function closeNote() {
+
+    document
+        .getElementById("notePopup")
+        .style.display =
+        "none";
+
+}
+
+
+/* =========================
+   FINISH
+========================= */
+
+function finishGame() {
+
+    document
+        .getElementById("play")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("final")
+        .classList
+        .add("active");
+
+}
+
+
+/* =========================
+   SECRET FINAL MESSAGE
+========================= */
+
+function secret() {
+
+    document
+        .getElementById("secret")
+        .innerHTML =
+
+        "SECRET UNLOCKED 💌<br><br>" +
+
+        "If you were a video game character,<br>" +
+
+        "I'd choose you every single time.<br><br>" +
+
+        "Now come collect your real-life reward. 😌❤️";
+
+}
+
+</script>
+
+</body>
+</html>
