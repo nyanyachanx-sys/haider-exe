@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>HAIDER.EXE — BF DAY</title>
+
+<style>
+
+body {
+    background: #0d0a10;
+    color: #e8c9ff;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.terminal {
+    width: 88%;
+    max-width: 650px;
+    border: 1px solid #d8a7ff;
+    padding: 28px;
+    background: #151019;
+    box-shadow: 0 0 35px #3b1d4f;
+}
+
+h1 {
+    color: #f1d9ff;
+    letter-spacing: 4px;
+}
+
+.subtitle {
+    color: #8f7b99;
+}
+
+.line {
+    margin: 12px 0;
+}
+
+button {
+    background: transparent;
+    color: #e8c9ff;
+    border: 1px solid #e8c9ff;
+    padding: 12px 20px;
+    font-family: monospace;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+button:hover {
+    background: #321d40;
+}
+
+#result {
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+.heart {
+    color: #ff9fc5;
+}
+
+.big {
+    font-size: 19px;
+    color: #f4ddff;
+}
+
+.confetti {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    top: -10px;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="terminal">
+
+<h1>HAIDER.EXE</h1>
+
+<div class="subtitle">
+boyfriend day edition ♡
+</div>
+
+<br>
+
+<div class="line">
+&gt; hello haider.
+</div>
+
+<div class="line">
+&gt; boyfriend detected.
+</div>
+
+<div class="line">
+&gt; beginning very serious evaluation...
+</div>
+
+<button onclick="start()">
+START BF DAY
+</button>
+
+<div id="result"></div>
+
+</div>
+
+
+<script>
+
+function start() {
+
+document.getElementById("result").innerHTML = `
+
+&gt; quick verification required.
+
+<br><br>
+
+<strong>
+Are you Haya's boyfriend?
+</strong>
+
+<br>
+
+<button onclick="yes()">
+YES
+</button>
+
+<button onclick="nope()">
+NO
+</button>
+
+`;
+
+}
+
+
+function nope() {
+
+document.getElementById("result").innerHTML = `
+
+&gt; checking answer...
+
+<br><br>
+
+❌ incorrect answer.
+
+<br>
+
+&gt; please try again.
+
+<br>
+
+<button onclick="start()">
+TRY AGAIN
+</button>
+
+`;
+
+}
+
+
+function yes() {
+
+document.getElementById("result").innerHTML = `
+
+&gt; answer accepted.
+
+<br><br>
+
+<div>✓ boyfriend detected</div>
+
+<div>✓ Haya approved</div>
+
+<div>✓ application accepted</div>
+
+<br>
+
+&gt; boyfriend privileges unlocked.
+
+<br><br>
+
+<div>
+♡ unlimited "call me" requests
+</div>
+
+<div>
+♡ random pictures
+</div>
+
+<div>
+♡ listening to unnecessary stories
+</div>
+
+<div>
+♡ hugs whenever requested
+</div>
+
+<div>
+♡ receiving songs you may or may not listen to
+</div>
+
+<div>
+♡ being loved an unreasonable amount
+</div>
+
+<br>
+
+<button onclick="accept()">
+ACCEPT PRIVILEGES
+</button>
+
+`;
+
+}
+
+
+function accept() {
+
+document.getElementById("result").innerHTML = `
+
+&gt; privileges accepted.
+
+<br><br>
+
+<div class="big">
+HAPPY BOYFRIEND DAY ♡
+</div>
+
+<br>
+
+you are officially today's  
+most important person.
+
+<br><br>
+
+unfortunately...
+
+<br>
+
+this position is permanent.
+
+<br>
+
+no refunds.
+
+<br>
+
+no exchanges.
+
+<br>
+
+you're stuck with me.
+
+<br><br>
+
+<button onclick="fate()">
+ACCEPT FATE
+</button>
+
+`;
+
+}
+
+
+function fate() {
+
+confetti();
+
+document.getElementById("result").innerHTML = `
+
+&gt; fate accepted.
+
+<br><br>
+
+<div class="big">
+BOYFRIEND STATUS: PERMANENT ♡
+</div>
+
+<br>
+
+&gt; updating relationship status...
+
+<br>
+
+✓ still my person
+
+<br>
+
+✓ still my favourite idiot
+
+<br>
+
+✓ still the one i want to tell everything to
+
+<br>
+
+✓ still very very loved
+
+<br><br>
+
+<span class="heart">
+♥ happy boyfriend day, haider.
+</span>
+
+<br><br>
+
+&gt; sending final message...
+
+<br><br>
+
+<span class="heart big">
+"i love you, idiot."
+</span>
+
+<br><br>
+
+&gt; okayyy bye.
+
+<br>
+
+&gt; actually wait.
+
+<br>
+
+&gt; one last thing...
+
+<br><br>
+
+<strong>
+call me ♡
+</strong>
+
+`;
+
+}
+
+
+function confetti() {
+
+for (let i = 0; i < 100; i++) {
+
+let piece = document.createElement("div");
+
+piece.className = "confetti";
+
+piece.style.left = Math.random() * 100 + "vw";
+
+piece.style.backgroundColor =
+["#ff9fc5", "#d8a7ff", "#ffffff", "#f7d6ff"][Math.floor(Math.random() * 4)];
+
+piece.style.animationDuration =
+(2 + Math.random() * 2) + "s";
+
+piece.style.animationDelay =
+(Math.random() * 0.5) + "s";
+
+document.body.appendChild(piece);
+
+setTimeout(() => {
+piece.remove();
+}, 4500);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
