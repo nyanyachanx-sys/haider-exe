@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HAIDER.EXE</title>
+
+<style>
+
+body {
+    background: #0b0b10;
+    color: #d8b4ff;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.terminal {
+    width: 90%;
+    max-width: 650px;
+    border: 1px solid #c084fc;
+    padding: 28px;
+    box-shadow: 0 0 30px #241333;
+    background: #111018;
+}
+
+h1 {
+    color: #e9d5ff;
+    letter-spacing: 4px;
+}
+
+.muted {
+    color: #81758f;
+}
+
+.line {
+    margin: 12px 0;
+}
+
+button {
+    background: transparent;
+    color: #d8b4ff;
+    border: 1px solid #d8b4ff;
+    padding: 12px 20px;
+    font-family: monospace;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+button:hover {
+    background: #241333;
+}
+
+#result {
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+.heart {
+    color: #ff9fc5;
+}
+
+.big {
+    font-size: 18px;
+    color: #f0d9ff;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="terminal">
+
+<h1>HAIDER.EXE</h1>
+
+<p class="muted">
+a very serious boyfriend evaluation system
+</p>
+
+<div class="line">
+&gt; hello haider.
+</div>
+
+<div class="line">
+&gt; please remain where you are.
+</div>
+
+<div class="line">
+&gt; boyfriend status detected.
+</div>
+
+<div class="line">
+&gt; beginning evaluation...
+</div>
+
+<button onclick="startGame()">
+OPEN FILE
+</button>
+
+<div id="result"></div>
+
+</div>
+
+
+<script>
+
+function startGame() {
+
+document.getElementById("result").innerHTML = `
+
+&gt; loading relationship data...
+
+<br>
+
+<div>✓ likes Haya</div>
+
+<div>✓ annoys Haya</div>
+
+<div>✓ makes Haya laugh</div>
+
+<div>✓ somehow became her favourite person</div>
+
+<div>✓ has survived countless "wait listen" moments</div>
+
+<div>✓ still chooses her anyway</div>
+
+<br>
+
+&gt; checking compatibility...
+
+<br><br>
+
+<div class="big">
+compatibility: suspiciously high
+</div>
+
+<br>
+
+&gt; checking boyfriend status...
+
+<br>
+
+<div>✓ boyfriend</div>
+
+<div>✓ best friend</div>
+
+<div>✓ professional Haya listener</div>
+
+<div>✓ certified person to call for no reason</div>
+
+<br>
+
+&gt; one final question...
+
+<br><br>
+
+<strong>
+Do you accept your position as Haya's boyfriend?
+</strong>
+
+<br>
+
+<button onclick="acceptFate()">
+ACCEPT FATE
+</button>
+
+`;
+
+}
+
+
+function acceptFate() {
+
+document.getElementById("result").innerHTML = `
+
+&gt; fate accepted.
+
+<br><br>
+
+<div class="big">
+CONGRATULATIONS.
+</div>
+
+<br>
+
+You are officially stuck with Haya.
+
+<br><br>
+
+✓ no refunds<br>
+✓ no exchanges<br>
+✓ unlimited yapping included<br>
+✓ occasional emotional support required<br>
+✓ hugs may be requested at any time
+
+<br><br>
+
+<span class="heart">
+♥ boyfriend status: permanently active
+</span>
+
+<br><br>
+
+&gt; sending final message...
+
+<br><br>
+
+<span class="heart">
+"i like you a lot, idiot."
+</span>
+
+<br><br>
+
+&gt; okayyy bye.
+
+<br>
+
+&gt; actually wait.
+
+<br>
+
+&gt; one last thing...
+
+<br><br>
+
+<strong>
+call me ♡
+</strong>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
